@@ -1,0 +1,37 @@
+def binary_search(arr, target, left, right):
+  """binar search."""
+  while left <= right:
+      mid = (left + right) // 2
+      if arr[mid] == target:
+          return mid
+      elif arr[mid] < target:
+          left = mid + 1
+      else:
+          right = mid - 1
+  return -1
+
+
+def exponential_search(arr, target):
+  """arajin tarric sksac exponencial mecanum en xosqi 1.2.4.8.16...u hasnum neq mi intervali vortex erevi te gtnvum e mer targety kam minchev hasnum enq zangvaci verj.et intervaly vortecx vor mtacum enq  vor gtnvum a mer targety et intervalum binar search enq anum
+  """
+  n = len(arr)
+  if n == 0:
+      return -1
+  # arajij andami sutugum
+  if arr[0] == target:
+      return 0
+  #diapazoni stugum 
+  index = 1
+  while index < n and arr[index] <= target:
+      index *= 2
+  return binary_search(arr, target, index // 2, min(index, n - 1))
+
+
+# Пример использования
+numbers = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+target = 13
+
+result = exponential_search(numbers, target)
+if result != -1:
+  print(f"index{result}")
+
